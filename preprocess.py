@@ -59,14 +59,10 @@ if __name__ == '__main__':
 
     os.makedirs(args.output_path, exist_ok=True)
     files = {}
-    for f in os.listdir():
-        if f.endswith('.txt') and f.find('box') != -1:
-            files['train_box'] = read_text_file(os.path.join(os.curdir, f))
-        elif f.endswith('.txt') and f.find('image') != -1:
-            files['train_image'] = read_text_file(
-                os.path.join(os.curdir, f))
-        elif f.endswith('.txt') and f.find('labels') == -1:
-            files['train'] = read_text_file(os.path.join(os.curdir, f))
+
+    files['train_box'] = read_text_file(os.path.join(os.curdir, 'data', 'training_box.txt'))
+    files['train_image'] = read_text_file(os.path.join(os.curdir, 'data', 'training_image.txt'))
+    files['train'] = read_text_file(os.path.join(os.curdir, 'data', 'training.txt'))
 
     assert(len(files['train']) == len(files['train_box']))
     assert(len(files['train_box']) == len(files['train_image']))
