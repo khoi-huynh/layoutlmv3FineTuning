@@ -83,7 +83,7 @@ if __name__ == '__main__':
         bboxes.append([box.split('\t')[1].replace('\n', '')
                       for box in files['train_box'][rows[0]:rows[-1]+1]])
 
-        image_path.append(f"/content/data/{image}")
+        image_path.append(f"/app/oracle/ocrai/data/{image}")
 
     labels = list(set([tag for doc_tag in ner_tags for tag in doc_tag]))
     id2label = {v: k for v, k in enumerate(labels)}
